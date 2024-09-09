@@ -2,6 +2,6 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Your Company - Transforming Ideas into Stunning Visuals",
+  title: "Graphic House - Transforming Ideas into Stunning Visuals",
   description: "Expert design services to elevate your brand.",
 };

@@ -33,6 +33,11 @@ export default function Navbar() {
   const handleNavItemClick = () => {
     setIsMenuOpen(false);
   };
+  const handleItemClick = () => {
+    router.push('/contact'); // Navigates to the /contact page
+  };
+ 
+  
 
   return (
     <nav className={`bg-black text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}>
@@ -58,9 +63,12 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex items-center">
+          <Link href='/contact'>
           <button className="hidden md:block bg-yellow-400 text-black px-4 py-1.5 rounded-full hover:bg-yellow-500 transition duration-300 text-sm font-semibold">
             Get Started
+            
           </button>
+          </Link>
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
             className="md:hidden text-white ml-4 focus:outline-none"
@@ -91,12 +99,13 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <button 
-              className="w-full mt-2 bg-yellow-400 text-black px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-sm font-semibold"
-              onClick={handleNavItemClick}
-            >
-              Get Started
-            </button>
+             <button 
+            className="w-full mt-2 bg-yellow-400 text-black px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-sm font-semibold"
+            onClick={handleItemClick}
+          >
+            Get Started
+          </button>
+          
           </div>
         </div>
       )}

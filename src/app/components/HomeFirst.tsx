@@ -83,7 +83,8 @@ export default function EnhancedHome() {
         </Link>
       </nav>
 
-      <section className="relative pt-4 pb-10 px-4 sm:pt-8 sm:pb-16 lg:pb-24 lg:min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+      <section className="relative pt-0 pb-10 px-4 sm:pt-0 sm:pb-16 lg:pb-24 lg:min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+
         {/* Left Column - Text Content */}
         <motion.div
           className="relative z-20"
@@ -225,6 +226,7 @@ export default function EnhancedHome() {
               alt="Printing Service Illustration"
               layout="fill"
               objectFit="contain"
+              objectPosition="top"
               className="rounded-lg"
             />
           </div>

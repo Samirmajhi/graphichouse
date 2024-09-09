@@ -59,11 +59,11 @@ export default function EnhancedHome() {
   };
 
   return (
-    <div className="bg-black relative min-h-screen overflow-hidden">
+    <div className="bg-black relative min-h-screen overflow-hidden flex flex-col">
       <div className="absolute inset-0 opacity-5"></div>
 
       {/* Navigation */}
-      <nav className="relative z-20 flex justify-between items-center py-4 px-6 lg:px-12">
+      <nav className="relative z-20 flex justify-between items-center py-2 px-6 lg:px-12">
         <div className="flex items-center">
           <Image src="/logo.jpg" alt="PrintMaster Logo" width={40} height={40} />
           <span className="ml-2 text-yellow-400 font-semibold text-xl">PrintMaster</span>
@@ -83,7 +83,7 @@ export default function EnhancedHome() {
         </Link>
       </nav>
 
-      <section className="relative pt-16 pb-10 px-4 sm:pt-24 sm:pb-16 lg:pb-24 lg:min-h-[calc(100vh-80px)] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+      <section className="relative pt-4 pb-10 px-4 sm:pt-8 sm:pb-16 lg:pb-24 lg:min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
         {/* Left Column - Text Content */}
         <motion.div
           className="relative z-20"
@@ -212,20 +212,23 @@ export default function EnhancedHome() {
         </motion.div>
 
         {/* Right Column - Image */}
+        {/* Right Column - Full-sized Image */}
         <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="relative lg:block w-full h-full max-h-[600px]"
-        >
-          <Image
-            src="/girlphoto.png"
-            alt="Printing Service Illustration"
-            layout="fill"
-            objectFit="contain"
-            className="rounded-lg"
-          />
-        </motion.div>
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="relative lg:block w-full h-full"
+      >
+        <div className="relative w-full h-full max-w-[600px] mx-auto">
+            <Image
+              src="/girlphoto3.png"
+              alt="Printing Service Illustration"
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
+      </motion.div>
       </section>
     </div>
   );

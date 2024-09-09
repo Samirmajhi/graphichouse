@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface TestimonialCardProps {
   image: string;
@@ -54,21 +55,21 @@ const TestimonialSection: React.FC = () => {
 
         <div className="grid max-w-xl grid-cols-1 mx-auto mt-8 lg:max-w-full sm:mt-16 lg:mt-20 lg:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-10">
           <TestimonialCard 
-            image="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/1/avatar-1.jpg"
-            name="Jenny Wilson"
-            position="Marketing Director, TechCorp"
+            image="/images/testimonial/sailesh.jpg"
+            name="Shailesh Bhattarai"
+            position="Founder, Bhattarai Enterprises"
             quote="The quality of their business card prints is outstanding. Our team's cards make a lasting impression on clients. Fast turnaround and excellent customer service too!"
           />
           <TestimonialCard 
-            image="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/1/avatar-2.jpg"
-            name="Robert Fox"
-            position="CEO, Innovate Inc."
+            image="/images/testimonial/samir.jpg"
+            name="Samir Majhi"
+            position="CEO, Hamro Edtech pvt ltd"
             quote="Their large format prints for our trade show booth were stunning. The colors were vibrant, and the details crisp. It really helped us stand out at the event."
           />
           <TestimonialCard 
             image="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/1/avatar-3.jpg"
-            name="Kristin Watson"
-            position="Product Manager, CreativeSolutions"
+            name="Srijana kafle"
+            position="Product Manager, Sajha Travels"
             quote="The brochures they printed for our product launch were simply perfect. The paper quality and color reproduction exceeded our expectations. Highly recommended!"
           />
         </div>

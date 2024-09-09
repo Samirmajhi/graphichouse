@@ -1,0 +1,131 @@
+/* General page styling */
+.category-designs-page {
+    padding: 50px 20px;
+    background-color: #fafafa;
+    font-family: 'Inter', sans-serif; /* Updated to match global font */
+    color: #333;
+    text-align: center;
+  }
+  
+  .page-title,
+  .page-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  .page-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    animation-delay: 0.2s;
+  }
+  
+  .page-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #7f8c8d;
+    animation-delay: 0.4s;
+  }
+  
+  /* Keyframes for fade-in and slide-up animation */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Products grid styling */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Center single product */
+  .single-product {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Product item styling */
+  .product-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Product image container styling */
+  .product-image-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .product-title {
+    font-size: 1.4em;
+    margin: 15px 0;
+    color: #34495e;
+  }
+  
+  .product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 20px;
+  }
+  
+  /* Lightbox styling */
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .lightbox-image:hover {
+    cursor: pointer;
+  }
+  
+  /* Placeholder for no image */
+  .no-image-placeholder {
+    font-size: 1.2em;
+    color: #bdc3c7;
+  }
+  

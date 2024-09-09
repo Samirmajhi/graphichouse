@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import ImageSlideshow from '../components/ImageSlide';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
@@ -15,8 +15,16 @@ const pageTransition = {
   duration: 0.5
 };
 
-const ContactSection = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  service: string;
+}
+
+const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -26,12 +34,12 @@ const ContactSection = () => {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.phone && formData.message && formData.service) {
       setFormSubmitted(true);
@@ -130,14 +138,14 @@ const ContactSection = () => {
               </motion.div>
             </div>
 
-            <div className="mt-16 overflow-hidden bg-gray-900 rounded-2xl shadow-lg border border-yellow-400">
-              <div className="p-8 sm:p-12">
-                <h3 className="text-3xl font-bold text-center text-yellow-400">Request a Quote</h3>
+            <div className="mt-8 sm:mt-16 overflow-hidden bg-gray-900 rounded-2xl shadow-lg border border-yellow-400">
+              <div className="p-4 sm:p-8 md:p-12">
+                <h3 className="text-2xl sm:text-3xl font-bold text-center text-yellow-400">Request a Quote</h3>
 
-                <form onSubmit={handleSubmit} className="mt-10">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                    <div>
-                      <label htmlFor="name" className="text-base font-medium text-gray-300">Your name</label>
+                <form onSubmit={handleSubmit} className="mt-6 sm:mt-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                      <label htmlFor="name" className="text-sm sm:text-base font-medium text-gray-300">Your name</label>
                       <input
                         type="text"
                         name="name"
@@ -145,13 +153,13 @@ const ContactSection = () => {
                         placeholder="Enter your full name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="mt-2 block w-full px-4 py-3 text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        className="mt-1 sm:mt-2 block w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         required
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="email" className="text-base font-medium text-gray-300">Your email</label>
+                    <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                      <label htmlFor="email" className="text-sm sm:text-base font-medium text-gray-300">Your email</label>
                       <input
                         type="email"
                         name="email"
@@ -159,13 +167,13 @@ const ContactSection = () => {
                         placeholder="Enter your email address"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="mt-2 block w-full px-4 py-3 text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        className="mt-1 sm:mt-2 block w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         required
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="phone" className="text-base font-medium text-gray-300">Your phone</label>
+                    <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                      <label htmlFor="phone" className="text-sm sm:text-base font-medium text-gray-300">Your phone</label>
                       <input
                         type="tel"
                         name="phone"
@@ -173,19 +181,19 @@ const ContactSection = () => {
                         placeholder="Enter your phone number"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="mt-2 block w-full px-4 py-3 text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        className="mt-1 sm:mt-2 block w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         required
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="service" className="text-base font-medium text-gray-300">Service needed</label>
+                    <div className="col-span-1 sm:col-span-2 md:col-span-1">
+                      <label htmlFor="service" className="text-sm sm:text-base font-medium text-gray-300">Service needed</label>
                       <select
                         name="service"
                         id="service"
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="mt-2 block w-full px-4 py-3 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        className="mt-1 sm:mt-2 block w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         required
                       >
                         <option value="">Select a service</option>
@@ -197,16 +205,16 @@ const ContactSection = () => {
                       </select>
                     </div>
 
-                    <div className="col-span-2">
-                      <label htmlFor="message" className="text-base font-medium text-gray-300">Your message</label>
+                    <div className="col-span-1 sm:col-span-2">
+                      <label htmlFor="message" className="text-sm sm:text-base font-medium text-gray-300">Your message</label>
                       <textarea
                         name="message"
                         id="message"
                         placeholder="Enter your message"
-                        rows="4"
+                        rows={4}
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="mt-2 block w-full px-4 py-3 text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        className="mt-1 sm:mt-2 block w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-300 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         required
                       ></textarea>
                     </div>
@@ -215,7 +223,7 @@ const ContactSection = () => {
                   <div className="mt-6 text-center">
                     <button
                       type="submit"
-                      className="px-6 py-3 text-base font-medium text-black bg-yellow-400 rounded-lg shadow hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                      className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium text-black bg-yellow-400 rounded-lg shadow hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200"
                     >
                       {formSubmitted ? 'Sent!' : 'Send Message'}
                     </button>
@@ -239,7 +247,7 @@ const ContactSection = () => {
               width="100%"
               height="450"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="rounded-lg shadow-lg"

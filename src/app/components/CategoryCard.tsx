@@ -3,10 +3,34 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
-const CategoryCard = ({ category }) => {
+interface CategoryCardProps {
+  category: {
+    id: string;
+    attributes: {
+      Name: string;
+      Photo?: {
+        data: {
+          attributes: {
+            url: string;
+            alternativeText?: string;
+          };
+        }[];
+      };
+      products?: {
+        data: {
+          attributes: {
+            Name: string;
+          };
+        }[];
+      };
+    };
+  };
+}
+
+const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
   if (!category || !category.attributes) {
     console.error('Invalid category data:', category);
-    return null; // or return a placeholder/error component
+    return null;
   }
 
   const photoData = category.attributes.Photo?.data || [];

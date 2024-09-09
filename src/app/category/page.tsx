@@ -2,9 +2,39 @@ import React from 'react';
 import { fetchProductCategories } from '../lib/api';
 import Link from 'next/link';
 import { Printer } from 'lucide-react';
-import CategoryCard from '../components/CategoryCard'; // Updated import path
+import CategoryCard from '../components/CategoryCard'; // Ensure this path is correct
 
-const fetchCategories = async () => {
+// Define types for the category data
+interface Photo {
+  attributes: {
+    url: string;
+    alternativeText?: string;
+  };
+}
+
+interface Product {
+  attributes: {
+    Name: string;
+  };
+}
+
+interface CategoryAttributes {
+  Name: string;
+  Photo?: {
+    data: Photo[];
+  };
+  products?: {
+    data: Product[];
+  };
+}
+
+interface Category {
+  id: string;
+  attributes: CategoryAttributes;
+}
+
+// Function to fetch categories
+const fetchCategories = async (): Promise<Category[]> => {
   try {
     const response = await fetchProductCategories();
     return response.data || [];
@@ -14,8 +44,8 @@ const fetchCategories = async () => {
   }
 };
 
-export default async function CategoriesPage() {
-  const categories = await fetchCategories();
+const CategoriesPage: React.FC = async () => {
+  const categories: Category[] = await fetchCategories();
 
   return (
     <div className="min-h-screen bg-black">
@@ -54,4 +84,6 @@ export default async function CategoriesPage() {
       </main>
     </div>
   );
-}
+};
+
+export default CategoriesPage;

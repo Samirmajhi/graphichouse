@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const StatItem = ({ end, label, sublabel }) => {
+interface StatItemProps {
+  end: number;
+  label: string;
+  sublabel: string;
+}
+
+const StatItem: React.FC<StatItemProps> = ({ end, label, sublabel }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -41,7 +47,7 @@ const StatItem = ({ end, label, sublabel }) => {
   );
 };
 
-const StatsSection = () => {
+const StatsSection: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [

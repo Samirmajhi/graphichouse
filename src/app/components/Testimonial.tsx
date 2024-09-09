@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const TestimonialCard = ({ image, name, position, quote }) => (
+interface TestimonialCardProps {
+  image: string;
+  name: string;
+  position: string;
+  quote: string;
+}
+
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ image, name, position, quote }) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -26,7 +33,7 @@ const TestimonialCard = ({ image, name, position, quote }) => (
   </motion.div>
 );
 
-const TestimonialSection = () => {
+const TestimonialSection: React.FC = () => {
   return (
     <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>

@@ -2,8 +2,24 @@ import React from 'react';
 import Image from 'next/image';
 import { Facebook, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { LucideIcon } from 'lucide-react';
 
-const teamMembers = [
+// Updated type definitions for team members and social links
+interface SocialLink {
+  name: string;
+  icon: LucideIcon;
+  href: string;
+}
+
+interface Member {
+  picture: string;
+  fullName: string;
+  designation: string;
+  bio: string;
+  socialLinks: SocialLink[];
+}
+
+const teamMembers: Member[] = [
   {
     picture: "/images/admin/suman-katwal.jpg",
     fullName: "Suman Katwal",
@@ -54,7 +70,7 @@ const teamMembers = [
   },
 ];
 
-const TeamMemberItem = ({ member }) => (
+const TeamMemberItem: React.FC<{ member: Member }> = ({ member }) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -64,7 +80,7 @@ const TeamMemberItem = ({ member }) => (
     <div className="relative w-48 h-48 mx-auto mt-8 mb-4 overflow-hidden rounded-full border-4 border-yellow-400/30 group-hover:border-yellow-400 transition-all duration-300">
       <Image
         src={member.picture}
-        alt={member.fullName}
+        alt={`${member.fullName}'s profile picture`}
         layout="fill"
         objectFit="cover"
         className="transition-transform duration-300 group-hover:scale-110"
@@ -75,22 +91,25 @@ const TeamMemberItem = ({ member }) => (
       <h6 className="text-lg font-medium mb-4 text-yellow-400">{member.designation}</h6>
       <p className="text-gray-300 mb-6">{member.bio}</p>
       <div className="flex justify-center space-x-4">
-        {member.socialLinks.map((link, i) => (
-          <a
-            href={link.href}
-            className="text-gray-400 hover:text-yellow-400 transition-colors duration-300"
-            key={i}
-            aria-label={link.name}
-          >
-            <link.icon size={20} />
-          </a>
-        ))}
+        {member.socialLinks.map((link, i) => {
+          const IconComponent = link.icon;
+          return (
+            <a
+              href={link.href}
+              className="text-gray-400 hover:text-yellow-400 transition-colors duration-300"
+              key={i}
+              aria-label={link.name}
+            >
+              <IconComponent size={20} />
+            </a>
+          );
+        })}
       </div>
     </div>
   </motion.div>
 );
 
-const TeamMember2 = () => {
+const AdminTeam: React.FC = () => {
   return (
     <section className="py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
@@ -118,4 +137,4 @@ const TeamMember2 = () => {
   );
 };
 
-export default TeamMember2;
+export default AdminTeam;

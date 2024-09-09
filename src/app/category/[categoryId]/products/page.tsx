@@ -1,18 +1,55 @@
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 import Link from 'next/link';
 import { fetchProductsByCategory, fetchProductCategory, fetchProductPricing } from '../../../lib/api';
 import ProductGrid from '../../../components/ProductGrid';
 
-export default async function ProductsPage({ params }) {
+type ProductsPageParams = {
+  categoryId: string;
+};
+
+interface Pricing {
+  attributes: {
+    min: number;
+    max?: number;
+    Price: number;
+  };
+}
+
+interface Product {
+  id: string;
+  attributes: {
+    Name: string;
+    Description: string;
+    Price: number;
+    Photo?: {
+      data?: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
+  };
+}
+
+interface PricingData {
+  data: Pricing[];
+}
+
+interface ProductWithPricing extends Product {
+  pricing: Pricing[];
+}
+
+export default async function ProductsPage({ params }: { params: ProductsPageParams }) {
   const { categoryId } = params;
   const [products, categoryName] = await Promise.all([
     fetchProducts(categoryId),
     fetchCategoryName(categoryId)
   ]);
 
-  const productsWithPricing = await Promise.all(
-    products.map(async (product) => {
+  const productsWithPricing: ProductWithPricing[] = await Promise.all(
+    products.map(async (product: Product) => {
       try {
-        const pricingData = await fetchProductPricing(product.id);
+        const pricingData: PricingData = await fetchProductPricing(product.id);
         return { ...product, pricing: pricingData.data || [] };
       } catch (error) {
         console.error(`Error fetching pricing for product ${product.id}:`, error);
@@ -47,7 +84,7 @@ export default async function ProductsPage({ params }) {
   );
 }
 
-async function fetchProducts(categoryId) {
+async function fetchProducts(categoryId: string): Promise<Product[]> {
   try {
     const response = await fetchProductsByCategory(categoryId);
     return response.data || [];
@@ -57,7 +94,7 @@ async function fetchProducts(categoryId) {
   }
 }
 
-async function fetchCategoryName(categoryId) {
+async function fetchCategoryName(categoryId: string): Promise<string> {
   try {
     const response = await fetchProductCategory(categoryId);
     return response.data.attributes.Name || 'Unknown Category';

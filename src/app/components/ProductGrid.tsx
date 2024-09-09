@@ -1,10 +1,38 @@
-// ProductGrid.js (Client Component)
 "use client"
 import React from 'react';
 import Image from 'next/image';
 import { Printer, Tag } from 'lucide-react';
 
-const ProductCard = ({ product }) => {
+interface Pricing {
+  attributes: {
+    min: number;
+    max?: number;
+    Price: number;
+  };
+}
+
+interface Product {
+  id: string;
+  attributes: {
+    Name: string;
+    Description: string;
+    Price: number;
+    Photo?: {
+      data?: Array<{
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
+  };
+  pricing: Pricing[];
+}
+
+interface ProductCardProps {
+  product: Product;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const imageUrl = product.attributes.Photo?.data?.[0]?.attributes.url
     ? `${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://20.198.254.137:1337'}${product.attributes.Photo.data[0].attributes.url}`
     : '/placeholder-product-image.jpg';
@@ -71,7 +99,11 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default function ProductGrid({ products }) {
+interface ProductGridProps {
+  products: Product[];
+}
+
+const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   if (products.length === 0) {
     return (
       <div className="bg-gray-800 rounded-lg shadow-md p-12 text-center max-w-md mx-auto">
@@ -88,4 +120,6 @@ export default function ProductGrid({ products }) {
       ))}
     </div>
   );
-}
+};
+
+export default ProductGrid;

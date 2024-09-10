@@ -48,7 +48,7 @@ const CategoriesPage: React.FC = async () => {
   const categories: Category[] = await fetchCategories();
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black text-white font-sans">
       <main className="container mx-auto px-6 pt-24 pb-12">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-yellow-400">
@@ -74,11 +74,9 @@ const CategoriesPage: React.FC = async () => {
         <div className="mt-20 text-center">
           <h2 className="text-3xl font-semibold mb-6 text-yellow-400">Can't find what you're looking for?</h2>
           <p className="text-gray-300 mb-8">Our team is here to help with custom printing solutions.</p>
-          <Link href="/contact">
-            <span className="inline-flex items-center bg-yellow-500 text-black px-8 py-3 rounded-lg hover:bg-yellow-600 transition duration-300 cursor-pointer">
-              <Printer className="mr-2 w-6 h-6" />
-              Contact Us
-            </span>
+          <Link href="/contact" className="inline-flex items-center bg-yellow-500 text-black px-8 py-3 rounded-lg hover:bg-yellow-600 transition duration-300">
+            <Printer className="mr-2 w-6 h-6" />
+            Contact Us
           </Link>
         </div>
       </main>

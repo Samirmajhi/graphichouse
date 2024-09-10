@@ -5,9 +5,10 @@ interface StatItemProps {
   end: number;
   label: string;
   sublabel: string;
+  plusSign?: boolean;
 }
 
-const StatItem: React.FC<StatItemProps> = ({ end, label, sublabel }) => {
+const StatItem: React.FC<StatItemProps> = ({ end, label, sublabel, plusSign = false }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -33,16 +34,16 @@ const StatItem: React.FC<StatItemProps> = ({ end, label, sublabel }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-400"
+      className="bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-400 hover:shadow-yellow-400/20 transition-shadow duration-300 font-sans"
     >
-      <h3 className="font-bold text-6xl md:text-7xl font-raleway">
+      <h3 className="font-bold text-6xl md:text-7xl">
         <span className="text-yellow-400">
           {count}
-          {end.toString().includes('+') ? '+' : ''}
+          {plusSign ? '+' : ''}
         </span>
       </h3>
-      <p className="mt-4 text-xl font-medium text-white font-raleway">{label}</p>
-      <p className="text-base mt-0.5 text-gray-300 font-raleway">{sublabel}</p>
+      <p className="mt-4 text-xl font-medium text-white">{label}</p>
+      <p className="text-base mt-0.5 text-gray-300">{sublabel}</p>
     </motion.div>
   );
 };
@@ -51,7 +52,6 @@ const StatsSection: React.FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
-    '/images/shop/aa.jpg',
     '/images/shop/bbb.jpg',
     '/images/shop/ccc.jpg',  
     '/images/shop/ddd.jpg',
@@ -68,13 +68,13 @@ const StatsSection: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(intervalId);
   }, [images.length]);
 
   return (
-    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden font-raleway">
+    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden font-sans">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -94,9 +94,9 @@ const StatsSection: React.FC = () => {
           </p>
         </motion.div>
         <div className="grid grid-cols-1 gap-8 mt-12 text-center lg:mt-20 sm:gap-x-8 md:grid-cols-3">
-          <StatItem end={6} label="Years in business" sublabel="Creating the successful path" />
-          <StatItem end={1000} label="Projects delivered" sublabel="In last 6 years" />
-          <StatItem end={4} label="Team members" sublabel="Working for your success" />
+          <StatItem end={6} label="Years in business" sublabel="Creating the successful path" plusSign={true} />
+          <StatItem end={1000} label="Projects delivered" sublabel="In last 6 years" plusSign={true} />
+          <StatItem end={10} label="Team members" sublabel="Working for your success" plusSign={true} />
         </div>
 
         <motion.div 
@@ -105,13 +105,18 @@ const StatsSection: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="relative overflow-hidden rounded-lg shadow-2xl">
-            <img
+          <div className="relative overflow-hidden rounded-lg shadow-2xl group">
+            <motion.img
+              key={currentImage}
               src={images[currentImage]}
               alt={`Shop ${currentImage + 1}`}
-              className="object-cover w-full h-[500px] transition-transform duration-500 transform hover:scale-105"
+              className="object-cover w-full h-[500px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-80 transition-opacity duration-500">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
               <div className="absolute bottom-0 p-6 text-white">
                 <h3 className="text-2xl font-bold">Shop Image {currentImage + 1}</h3>
                 <p className="text-lg mt-2">Description of image {currentImage + 1}</p>
@@ -120,12 +125,14 @@ const StatsSection: React.FC = () => {
           </div>
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {images.map((_, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-2 h-2 rounded-full cursor-pointer ${
                   index === currentImage ? 'bg-yellow-400' : 'bg-gray-500'
                 }`}
-              ></div>
+                whileHover={{ scale: 1.2 }}
+                onClick={() => setCurrentImage(index)}
+              ></motion.div>
             ))}
           </div>
         </motion.div>

@@ -1,161 +1,160 @@
 /* General styling */
 .services-section {
-    background: linear-gradient(135deg, #e0f7fa, #80deea);
-    padding: 5rem 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .services-header h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #222831;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  .services-header p {
-    color: #7d7d7d;
-    max-width: 850px;
-    margin: 0 auto 3rem;
-    font-size: 1.2rem;
-    line-height: 1.8;
-  }
-  
-  .services-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .services-grid {
-    display: flex;
-    gap: 2rem;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding-bottom: 2rem;
-    overflow-x: auto;
-    margin: 0 -2rem;
-    padding: 0 2rem;
-  }
-  
+  background-color: #ffffff; /* Changed background to white */
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333333; /* Adjusted text color for better contrast with white background */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.services-header p {
+  color: #7d7d7d;
+  max-width: 850px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.services-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.services-grid {
+  display: flex;
+  gap: 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+  overflow-x: auto;
+  margin: 0 -2rem;
+  padding: 0 2rem;
+}
+
+.service-card {
+  background-color: #ffffff; /* White background for service cards */
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(233, 230, 230, 0.966);
+}
+
+.service-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  color: #007bff;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: rotate(360deg);
+}
+
+.service-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.service-description {
+  color: #666666;
+  margin-bottom: 1.8rem;
+}
+
+.service-link {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.4s ease, transform 0.4s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.service-link:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Scroll buttons */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(253, 243, 243);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-button:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.scroll-button.left {
+  left: 1rem;
+}
+
+.scroll-button.right {
+  right: 1rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
   .service-card {
-    background-color: #ffffff;
-    padding: 2.5rem 2rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    text-align: center;
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-    position: relative;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-12px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  .service-icon {
-    font-size: 4.5rem;
-    margin-bottom: 1.5rem;
-    color: #007bff;
-    transition: transform 0.4s ease;
-  }
-  
-  .service-card:hover .service-icon {
-    transform: rotate(360deg);
-  }
-  
-  .service-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #333333;
-    margin-bottom: 1rem;
-  }
-  
-  .service-description {
-    color: #666666;
-    margin-bottom: 1.8rem;
-  }
-  
-  .service-link {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background-color: #007bff;
-    color: #ffffff;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: background-color 0.4s ease, transform 0.4s ease;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .service-link:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-  }
-  
-  /* Scroll buttons */
-  .scroll-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    border: none;
-    color: white;
-    font-size: 2rem;
-    padding: 0.8rem;
-    cursor: pointer;
-    z-index: 1;
-    transition: background-color 0.3s ease;
-  }
-  
-  .scroll-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .scroll-button.left {
-    left: 1rem;
-  }
-  
-  .scroll-button.right {
-    right: 1rem;
-  }
-  
-  /* Mobile optimizations */
-  @media (max-width: 768px) {
-    .service-card {
       flex: 0 0 270px;
-    }
-  
-    .scroll-button {
+  }
+
+  .scroll-button {
       display: none;
-    }
-  
-    .service-icon {
+  }
+
+  .service-icon {
       font-size: 4rem;
-    }
   }
-  
-  /* Progress indicators */
-  .progress-indicators {
-    margin-top: 1.5rem;
-  }
-  
-  .progress-dot {
-    display: inline-block;
-    height: 12px;
-    width: 12px;
-    background-color: #ddd;
-    border-radius: 50%;
-    margin: 0 0.3rem;
-  }
-  
-  .progress-dot.active {
-    background-color: #007bff;
-  }
-  
+}
+
+/* Progress indicators */
+.progress-indicators {
+  margin-top: 1.5rem;
+}
+
+.progress-dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin: 0 0.3rem;
+}
+
+.progress-dot.active {
+  background-color: #007bff;
+}

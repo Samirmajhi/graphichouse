@@ -14,7 +14,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ image, name, position
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="overflow-hidden bg-gray-900 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-yellow-400/20 border border-gray-800 font-raleway"
+    className="overflow-hidden bg-gray-900 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-yellow-400/20 border border-gray-800 font-sans"
   >
     <div className="px-8 py-12">
       <div className="relative w-24 h-24 mx-auto">
@@ -26,17 +26,17 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ image, name, position
         </div>
       </div>
       <blockquote className="mt-7">
-        <p className="text-lg text-gray-300">{quote}</p>
+        <p className="text-lg text-gray-300 font-sans">{quote}</p>
       </blockquote>
-      <p className="text-base font-semibold text-yellow-400 mt-9">{name}</p>
-      <p className="mt-1 text-base text-gray-400">{position}</p>
+      <p className="text-base font-semibold text-yellow-400 mt-9 font-sans">{name}</p>
+      <p className="mt-1 text-base text-gray-400 font-sans">{position}</p>
     </div>
   </motion.div>
 );
 
 const TestimonialSection: React.FC = () => {
   return (
-    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden font-raleway">
+    <section className="py-16 bg-white sm:py-20 lg:py-24 relative overflow-hidden font-sans">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative z-10">
         <motion.div 
@@ -45,14 +45,14 @@ const TestimonialSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl font-bold leading-tight text-yellow-400 sm:text-4xl lg:text-5xl">
-            Trusted by <span className="text-white">10k+</span> businesses for quality printing
+          <h2 className="text-3xl font-bold leading-tight text-gray-600 sm:text-4xl lg:text-5xl font-sans">
+            Trusted by <span className="text-dark">10k+</span> businesses for quality printing
           </h2>
-          <p className="mt-4 text-xl text-gray-300">
+          <p className="mt-4 text-xl text-gray-600 font-sans">
             From startups to Fortune 500 companies, we deliver excellence in every print.
           </p>
         </motion.div>
-
+        
         <div className="grid max-w-xl grid-cols-1 mx-auto mt-8 lg:max-w-full sm:mt-16 lg:mt-20 lg:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-10">
           <TestimonialCard 
             image="/images/testimonial/sailesh.jpg"

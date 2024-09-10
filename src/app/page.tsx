@@ -65,7 +65,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gray-900 text-white overflow-hidden font-sans">
       
       {/* Mobile Menu */}
       {isMenuOpen && (

@@ -1,4 +1,4 @@
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import Link from 'next/link';
 import { fetchProductsByCategory, fetchProductCategory, fetchProductPricing } from '../../../lib/api';
 import ProductGrid from '../../../components/ProductGrid';
@@ -59,13 +59,13 @@ export default async function ProductsPage({ params }: { params: ProductsPagePar
   );
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 font-sans">
       <main className="container mx-auto px-4 py-24">
         <div className="mb-12 text-center">
-          <h1 className="text-5xl font-bold mb-4 text-yellow-400">
+          <h1 className="text-5xl font-bold mb-4 text-yellow-400 font-sans">
             {categoryName}
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto font-sans">
             Explore our wide range of high-quality printing products in this category.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default async function ProductsPage({ params }: { params: ProductsPagePar
         
         <div className="mt-16 text-center">
           <Link href="/category">
-            <span className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-full hover:bg-yellow-300 transition duration-300 text-lg font-semibold">
+            <span className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-full hover:bg-yellow-300 transition duration-300 text-lg font-semibold font-sans">
               Back to Categories
             </span>
           </Link>

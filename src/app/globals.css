@@ -17,14 +17,15 @@
 }
 
 body {
+  font-family: 'Raleway', sans-serif; /* Apply Raleway font */
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     to bottom,
     #0D47A1, /* Darker and richer start color */
     #1976D2, /* Mid transition color */
     #42A5F5  /* Lighter and more vibrant end color */
-);
-
+  );
+  
   /* Make sure the gradient covers the entire viewport */
   background-size: cover;
   background-attachment: fixed;

@@ -20,13 +20,16 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white font-sans">
       <main className="container mx-auto px-4 py-20">
         {/* Hero Section */}
         <motion.section className="text-center mb-20" {...fadeIn}>
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 text-yellow-400">
-            About Graphic House
-          </h1>
+        
+
+            <h1 className="text-6xl md:text-7xl font-bold mb-6">
+              <span className="text-white">About</span> <span className="text-yellow-400">Graphic House</span>
+            </h1>
+
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             We are passionate creatives dedicated to transforming ideas into captivating visual masterpieces.
           </p>

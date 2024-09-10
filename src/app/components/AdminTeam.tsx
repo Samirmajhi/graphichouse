@@ -4,7 +4,6 @@ import { Facebook, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 
-// Updated type definitions for team members and social links
 interface SocialLink {
   name: string;
   icon: LucideIcon;
@@ -75,7 +74,7 @@ const TeamMemberItem: React.FC<{ member: Member }> = ({ member }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:-translate-y-2 group"
+    className="bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-yellow-400/20 hover:-translate-y-2 group font-raleway"
   >
     <div className="relative w-48 h-48 mx-auto mt-8 mb-4 overflow-hidden rounded-full border-4 border-yellow-400/30 group-hover:border-yellow-400 transition-all duration-300">
       <Image
@@ -111,7 +110,7 @@ const TeamMemberItem: React.FC<{ member: Member }> = ({ member }) => (
 
 const AdminTeam: React.FC = () => {
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden font-raleway">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 

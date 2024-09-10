@@ -14,7 +14,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ image, name, position
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="overflow-hidden bg-gray-900 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-yellow-400/20 border border-gray-800"
+    className="overflow-hidden bg-gray-900 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-yellow-400/20 border border-gray-800 font-raleway"
   >
     <div className="px-8 py-12">
       <div className="relative w-24 h-24 mx-auto">
@@ -36,7 +36,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ image, name, position
 
 const TestimonialSection: React.FC = () => {
   return (
-    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden font-raleway">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative z-10">
         <motion.div 

@@ -35,14 +35,14 @@ const StatItem: React.FC<StatItemProps> = ({ end, label, sublabel }) => {
       transition={{ duration: 0.5 }}
       className="bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-400"
     >
-      <h3 className="font-bold text-6xl md:text-7xl">
+      <h3 className="font-bold text-6xl md:text-7xl font-raleway">
         <span className="text-yellow-400">
           {count}
           {end.toString().includes('+') ? '+' : ''}
         </span>
       </h3>
-      <p className="mt-4 text-xl font-medium text-white">{label}</p>
-      <p className="text-base mt-0.5 text-gray-300">{sublabel}</p>
+      <p className="mt-4 text-xl font-medium text-white font-raleway">{label}</p>
+      <p className="text-base mt-0.5 text-gray-300 font-raleway">{sublabel}</p>
     </motion.div>
   );
 };
@@ -74,7 +74,7 @@ const StatsSection: React.FC = () => {
   }, [images.length]);
 
   return (
-    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="py-16 bg-black sm:py-20 lg:py-24 relative overflow-hidden font-raleway">
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
       <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8 relative z-10">
         <motion.div

@@ -4,6 +4,9 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Raleway } from 'next/font/google';
+
+const railway = Raleway({ subsets: ['latin'] });
 
 interface FeatureProps {
   icon: ReactNode;
@@ -17,8 +20,8 @@ function Feature({ icon, title, text }: FeatureProps) {
       <div className="flex justify-center items-center">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold mt-4 text-yellow-400">{title}</h3>
-      <p className="text-gray-300 mt-2">{text}</p>
+      <h3 className={`${railway.className} text-lg font-semibold mt-4 text-yellow-400`}>{title}</h3>
+      <p className={`${railway.className} text-gray-300 mt-2`}>{text}</p>
     </div>
   );
 }
@@ -59,7 +62,7 @@ export default function EnhancedHome() {
   };
 
   return (
-    <div className="bg-black relative min-h-screen overflow-hidden flex flex-col">
+    <div className={`${railway.className} bg-black relative min-h-screen overflow-hidden flex flex-col`}>
       <div className="absolute inset-0 opacity-5"></div>
 
       {/* Navigation */}
@@ -93,7 +96,7 @@ export default function EnhancedHome() {
           animate="visible"
         >
           <motion.h1
-            className="text-4xl font-bold sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6"
+            className={`${railway.className} text-4xl font-bold sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6`}
             variants={itemVariants}
           >
             <span className="text-yellow-400">
@@ -103,7 +106,7 @@ export default function EnhancedHome() {
             <span className="text-white">with Premium Printing</span>
           </motion.h1>
           <motion.p
-            className="text-lg text-gray-300 sm:text-xl lg:text-2xl mb-8"
+            className={`${railway.className} text-lg text-gray-300 sm:text-xl lg:text-2xl mb-8`}
             variants={itemVariants}
           >
             Experience the PrintMaster difference: High-quality prints,
@@ -116,7 +119,7 @@ export default function EnhancedHome() {
           >
             <Link
               href="/category"
-              className="inline-flex items-center justify-center px-6 py-3 font-semibold text-black transition-all duration-200 bg-yellow-400 rounded-full hover:bg-yellow-300 focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black"
+              className={`${railway.className} inline-flex items-center justify-center px-6 py-3 font-semibold text-black transition-all duration-200 bg-yellow-400 rounded-full hover:bg-yellow-300 focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black`}
             >
               Get Started
               <svg
@@ -137,7 +140,7 @@ export default function EnhancedHome() {
             <button
               onClick={handlePortfolioDownload}
               aria-label="Download Brochure"
-              className="inline-flex items-center justify-center px-6 py-3 font-semibold text-yellow-400 transition-all duration-200 border-2 border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black"
+              className={`${railway.className} inline-flex items-center justify-center px-6 py-3 font-semibold text-yellow-400 transition-all duration-200 border-2 border-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black`}
             >
               Download Brochure
               <svg
@@ -212,15 +215,14 @@ export default function EnhancedHome() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column - Image */}
         {/* Right Column - Full-sized Image */}
         <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="relative lg:block w-full h-full"
-      >
-        <div className="relative w-full h-full max-w-[600px] mx-auto">
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="relative lg:block w-full h-full"
+        >
+          <div className="relative w-full h-full max-w-[600px] mx-auto">
             <Image
               src="/girlphoto3.png"
               alt="Printing Service Illustration"
@@ -230,7 +232,7 @@ export default function EnhancedHome() {
               className="rounded-lg"
             />
           </div>
-      </motion.div>
+        </motion.div>
       </section>
     </div>
   );

@@ -95,7 +95,7 @@ const StatsSection: React.FC = () => {
         </motion.div>
         <div className="grid grid-cols-1 gap-8 mt-12 text-center lg:mt-20 sm:gap-x-8 md:grid-cols-3">
           <StatItem end={6} label="Years in business" sublabel="Creating the successful path" plusSign={true} />
-          <StatItem end={1000} label="Projects delivered" sublabel="In last 6 years" plusSign={true} />
+          <StatItem end={1000} label="Projects delivered" sublabel="In last 6 years" plusSign={false} />
           <StatItem end={10} label="Team members" sublabel="Working for your success" plusSign={true} />
         </div>
 
